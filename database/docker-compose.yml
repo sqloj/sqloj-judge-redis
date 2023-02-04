@@ -1,0 +1,16 @@
+version: '3'
+services:
+  redis:
+    image: redis:latest
+    restart: always
+    container_name: redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - /data/redis/data:/data
+      - /data/redis/conf/redis.conf:/etc/redis/redis.conf
+      - /apps/redis/logs:/logs
+    command: redis-server --requirepass sy123456
+    environment:
+      REDIS_PASSWORD: sy123456
+      REDIS_INITDB_SKIP_TZINFO: 1
