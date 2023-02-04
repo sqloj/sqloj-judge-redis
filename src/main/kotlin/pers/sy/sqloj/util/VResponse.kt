@@ -1,6 +1,6 @@
-package pers.sy.sqloj.util;
+package pers.sy.sqloj.util
 
-import java.time.LocalDateTime;
+import java.time.LocalDateTime
 
 data class VResponse<T>(val code: Int, val message: String?, val data: T?, val time: LocalDateTime) {
     companion object {

@@ -1,15 +1,6 @@
 server:
-  port: ${SQLOJ_PORT:10100}
+  port: ${REDIS_PORT:10111}
 
 spring:
   jackson:
     time-zone: Asia/Shanghai
-  redis:
-    database: 1 # Redis 数据库索引
-    port: 6379
-    host: localhost
-    password: {$REDIS_PASSWORD:sy123456}
-
-mybatis:
-  mapper-locations: classpath:mapping/*Mapping.xml
-  type-aliases-package: pers.sy.sqloj.entity

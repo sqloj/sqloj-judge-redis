@@ -1,19 +1,20 @@
 package pers.sy.sqloj.service
 
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import pers.sy.sqloj.common.Configs
 import pers.sy.sqloj.entity.VersionDO
-import pers.sy.sqloj.mapper.DbInfoMapper
 
 @Service
 class InfoService
-        @Autowired constructor(
-                val dbInfoMapper: DbInfoMapper
+        constructor(
+                val dbInfoMapper: RedisConnect
         ) {
-            fun getVersion(): VersionDO {
-                return dbInfoMapper.version()
-            }
+    fun getVersion(): VersionDO {
+        return VersionDO(
+            Regex(pattern = """redis_version:.*""")
+                .find(dbInfoMapper.jedisConnection().info())?.value
+        )
+    }
 
             fun verify(password: String): Boolean {
                 return password == Configs.password

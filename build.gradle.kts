@@ -18,14 +18,20 @@ repositories {
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter")
     implementation("org.springframework.boot:spring-boot-starter-web")
-    implementation("org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.2")
-    implementation("org.springframework.boot:spring-boot-starter-data-redis")
-//    implementation("org.mariadb.jdbc:mariadb-java-client:3.0.4")
     implementation("org.springdoc:springdoc-openapi-ui:1.6.8")
-
-    implementation("org.jetbrains.kotlin:kotlin-reflect")
+    implementation("org.springframework.boot:spring-boot-starter-data-redis")
+    implementation("org.springframework.data:spring-data-redis")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+    implementation("org.junit.jupiter:junit-jupiter:5.8.1")
+    implementation("org.apache.commons:commons-pool2")
+    implementation("redis.clients:jedis")
+
+
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+//    testImplementation("org.springframework.boot:spring-boot-starter-data-redis")
+//    testImplementation("org.springframework.data:spring-data-redis")
+//    testImplementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+//    testImplementation("org.junit.jupiter:junit-jupiter:5.8.1")
 }
 
 tasks.withType<KotlinCompile> {
