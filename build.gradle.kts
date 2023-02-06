@@ -28,10 +28,6 @@ dependencies {
 
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
-//    testImplementation("org.springframework.boot:spring-boot-starter-data-redis")
-//    testImplementation("org.springframework.data:spring-data-redis")
-//    testImplementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-//    testImplementation("org.junit.jupiter:junit-jupiter:5.8.1")
 }
 
 tasks.withType<KotlinCompile> {

@@ -5,17 +5,16 @@ import pers.sy.sqloj.exception.ScriptException
 import redis.clients.jedis.Jedis
 
 @Service
-data class JudgeService
-    constructor(
-                val jedis: Jedis = RedisConnect().jedisConnection()
-    ) {
+class JudgeService
+    {
+
     fun exec(statement: String, keys: ArrayList<String>, args: ArrayList<String> ): ArrayList<String> {
+        val jedis: Jedis = RedisConnect().jedisConnection()
         System.err.println("[LOG] exec: statement = $statement")
         var ret:ArrayList<String> = ArrayList()
         try {
             // connect
             jedis.connect()
-            jedis.select(1)
             jedis.flushDB()
             // Run Script
             val luaScript = jedis.scriptLoad(statement)
@@ -48,12 +47,10 @@ data class JudgeService
         var args: ArrayList<String>
         if (luaSplit.size == 3) {
             keys = ArrayList(luaSplit[1].trim().split(Regex("""\s+""")))
-            args = ArrayList(luaSplit[1].trim().split(Regex("""\s+""")))
+            args = ArrayList(luaSplit[2].trim().split(Regex("""\s+""")))
         } else {
             throw ScriptException()
         }
-        println("KEYS : $keys")
-        println("ARGS : $args")
         return exec(luaSplit[0], keys, args)
     }
 }

@@ -1,2 +1,2 @@
-rootProject.name = "sqloj-judge-redis"
+rootProject.name = "sqloj-judge"
 

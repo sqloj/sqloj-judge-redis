@@ -1,16 +1,18 @@
 version: '3'
 services:
-  redis:
-    image: redis:latest
+  judge-redis-database:
+    image: redis
     restart: always
-    container_name: redis
+    container_name: judge-redis-database
     ports:
       - "6379:6379"
     volumes:
       - /data/redis/data:/data
       - /data/redis/conf/redis.conf:/etc/redis/redis.conf
-      - /apps/redis/logs:/logs
     command: redis-server --requirepass sy123456
     environment:
+      REDIS_PORT: 6379
+      REDIS_JUDGE_DATABASE: 1
       REDIS_PASSWORD: sy123456
-      REDIS_INITDB_SKIP_TZINFO: 1
+      REDIS_HOST: judge-redis-database
+
