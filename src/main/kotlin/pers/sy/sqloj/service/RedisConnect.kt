@@ -10,11 +10,10 @@ class RedisConnect() {
     val redisHost: String = Configs.host
     val redisPort: String = Configs.port
     val redisDatabase: String = Configs.judgedatabase
-    val redisPassword: String = Configs.password
+    val redisPassword: String = Configs.redisPassword
 
 
     fun jedisConnection(): Jedis {
-//        println("host : ${redisHost}, port : ${redisPort}, database : ${redisDatabase}, password: ${redisPassword} ")
         val jedis = Jedis(redisHost,redisPort.toInt())
         jedis.auth(redisPassword)
         jedis.select(redisDatabase.toInt())
