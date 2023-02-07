@@ -43,11 +43,11 @@ class JudgeService
 
     fun judge(lua: String): ArrayList<String> {
         val luaSplit: List<String> = lua.trim().split("--JUDGE_SERVER_KEY_ARG")
-        var keys: ArrayList<String>
-        var args: ArrayList<String>
-        if (luaSplit.size == 3) {
-            keys = ArrayList(luaSplit[1].trim().split(Regex("""\s+""")))
-            args = ArrayList(luaSplit[2].trim().split(Regex("""\s+""")))
+        var keys = ArrayList<String>()
+        var args = ArrayList<String>()
+        if (luaSplit.size <= 3) {
+            if(luaSplit.size > 1)keys = ArrayList(luaSplit[1].trim().split(Regex("""\s+""")))
+            if(luaSplit.size > 2)args = ArrayList(luaSplit[2].trim().split(Regex("""\s+""")))
         } else {
             throw ScriptException()
         }
